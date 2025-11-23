@@ -1,5 +1,5 @@
 // cacheName needs to be changed after any of the assets are changed
-const cacheName = 'ThePublicHomeCache7';
+const cacheName = 'ThePublicHomeCache8';
 
 const cacheAssets = [
 	'/js/app.js'
