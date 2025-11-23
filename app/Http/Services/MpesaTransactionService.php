@@ -110,8 +110,8 @@ class MpesaTransactionService extends Service
 
 		$firstname = implode(" ", $parts);
 
-		$K2 = new K2($this->sandboxOptions());
-		// $K2 = new K2($this->liveOptions());
+		// $K2 = new K2($this->sandboxOptions());
+		$K2 = new K2($this->liveOptions());
 
 		// Get one of the services
 		$tokens = $K2->TokenService();
