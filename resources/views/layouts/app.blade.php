@@ -22,7 +22,7 @@
 
 	<!-- Favicon  -->
 	<link rel="icon"
-		  href="storage/img/favicon-32x32.png">
+		  href="img/favicon-32x32.png">
 
 	{{-- Manifest --}}
 	<link rel="manifest"
@@ -39,7 +39,7 @@
 
 	{{-- IOS support --}}
 	<link rel="apple-touch-icon"
-		  href="storage/img/musical-note.png">
+		  href="img/musical-note.png">
 	<meta name="apple-mobile-web-app-status-bar"
 		  content="#aa7700">
 

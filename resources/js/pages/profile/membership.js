@@ -3,12 +3,20 @@ import { useHistory } from "react-router-dom/cjs/react-router-dom.min"
 
 import Btn from "@/components/Core/Btn"
 import MyLink from "@/components/Core/MyLink"
+import PayModal from "@/components/Membership/PayModal"
 
 const membership = (props) => {
 	// Get history for page location
 	const router = useHistory()
 
-	const [groupedMemberships, setGroupedMemberships] = useState([])
+	const [groupedMemberships, setGroupedMemberships] = useState([
+		[],
+		[],
+		[],
+		[],
+		[],
+		[],
+	])
 	const [loading, setLoading] = useState("")
 
 	useEffect(() => {
@@ -22,7 +30,7 @@ const membership = (props) => {
 				res.data.data.anniversary,
 				res.data.data.celebration,
 			].filter((item) => item != null)
-			
+
 			setGroupedMemberships(data)
 		})
 	}, [])
@@ -42,7 +50,7 @@ const membership = (props) => {
 					// Set Auth
 					props.setAuth(res2.data.data)
 					// Push to edit page
-					router.push(createUrl(res.data.data.membership.name))
+					// router.push(createUrl(res.data.data.membership.name))
 				})
 			})
 			.catch((err) => {
@@ -83,7 +91,7 @@ const membership = (props) => {
 					backgroundSize: "cover",
 					backgroundPosition: "top",
 				}}>
-				{/* Cards */}
+				{/* Membership Cards Start */}
 				{groupedMemberships.map((memberships, key) => (
 					<div
 						key={key}
@@ -96,7 +104,7 @@ const membership = (props) => {
 						}}>
 						<div className="card-header text-white border-0 py-4">
 							<h5 className="card-title text-center">
-								{memberships[0].name.split("_").map((name, key) => (
+								{memberships[0]?.name.split("_").map((name, key) => (
 									<span
 										key={key}
 										className="me-1 text-capitalize">
@@ -116,12 +124,34 @@ const membership = (props) => {
 											<React.Fragment>
 												{props.auth.membershipName.match(memberships[0].name) &&
 												props.auth.membershipTier.match(membership.tier) ? (
-													<MyLink
-														linkTo={createUrl(memberships[0].name)}
-														text="current"
-													/>
+													<React.Fragment>
+														{props.auth.membershipStatus == "paid" ? (
+															<MyLink
+																linkTo={createUrl(memberships[0].name)}
+																text="current"
+															/>
+														) : (
+															<PayModal
+																{...props}
+																index={`payModal${key}`}
+																membership={membership}
+																urlTo={createUrl(memberships[0].name)}
+															/>
+														)}
+													</React.Fragment>
 												) : (
-													""
+													<React.Fragment>
+														{props.auth.membershipStatus == "pending" ? (
+															<Btn
+																btnText="get"
+																btnClass="btn-sm px-4"
+																onClick={() => onMembership(membership.id)}
+																loading={loading == membership.id}
+															/>
+														) : (
+															""
+														)}
+													</React.Fragment>
 												)}
 											</React.Fragment>
 										) : (
@@ -183,6 +213,7 @@ const membership = (props) => {
 						<div className="card-footer text-center border-0 py-4"></div>
 					</div>
 				))}
+				{/* Membership Cards End */}
 			</div>
 		</React.Fragment>
 	)

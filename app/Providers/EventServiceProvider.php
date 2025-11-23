@@ -14,6 +14,7 @@ use App\Events\DeathLikedEvent;
 use App\Events\GraduationCommentedEvent;
 use App\Events\GraduationCommentLikedEvent;
 use App\Events\GraduationLikedEvent;
+use App\Events\MpesaTransactionCreatedEvent;
 use App\Events\SuccessCardCommentedEvent;
 use App\Events\SuccessCardCommentLikedEvent;
 use App\Events\SuccessCardLikedEvent;
@@ -32,6 +33,7 @@ use App\Listeners\DeathLikedListener;
 use App\Listeners\GraduationCommentedListener;
 use App\Listeners\GraduationCommentLikedListener;
 use App\Listeners\GraduationLikedListener;
+use App\Listeners\MpesaTransactionCreatedListener;
 use App\Listeners\SuccessCardCommentedListener;
 use App\Listeners\SuccessCardCommentLikedListener;
 use App\Listeners\SuccessCardLikedListener;
@@ -72,6 +74,7 @@ class EventServiceProvider extends ServiceProvider
         CelebrationLikedEvent::class => [CelebrationLikedListener::class],
         CelebrationCommentedEvent::class => [CelebrationCommentedListener::class],
         CelebrationCommentLikedEvent::class => [CelebrationCommentLikedListener::class],
+		MpesaTransactionCreatedEvent::class => [MpesaTransactionCreatedListener::class],
     ];
 
     /**

@@ -99,12 +99,4 @@ class WeddingController extends Controller
             "message" => $message,
         ], 200);
     }
-
-	/*
-	* Get By User ID
-	*/ 
-	public function byUserId($id)
-	{
-		return $this->service->byUserId($id);
-	}
 }

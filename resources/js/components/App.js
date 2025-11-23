@@ -46,6 +46,7 @@ const App = () => {
 	// Declare states
 	const [messages, setMessages] = useState([])
 	const [errors, setErrors] = useState([])
+	const [formErrors, setFormErrors] = useState([])
 	const [login, setLogin] = useState(false)
 	const [leftMenu, setLeftMenu] = useState("")
 	const [adminMenu, setAdminMenu] = useState("left-open")
@@ -115,7 +116,8 @@ const App = () => {
 		}
 		// Get other errors
 		message && newError.push(err.response.data.message)
-		setErrors(newError)
+		errors && setErrors(errorsAsArray)
+		formErrors && setFormErrors(arraysWithFieldNames)
 	}
 
 	// Fetch data on page load
@@ -129,8 +131,6 @@ const App = () => {
 		getPaginated("success-cards", setSuccessCards, "success-cards")
 		getPaginated("weddings", setWeddings, "weddings")
 	}, [auth])
-
-	console.log("rendered")
 
 	/*
 	 *
@@ -199,6 +199,7 @@ const App = () => {
 		setMessages,
 		errors,
 		setErrors,
+		formErrors,
 		isAuth,
 		setIsAuth,
 

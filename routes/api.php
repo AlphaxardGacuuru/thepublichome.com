@@ -17,7 +17,9 @@ use App\Http\Controllers\GraduationCommentController;
 use App\Http\Controllers\GraduationCommentLikeController;
 use App\Http\Controllers\GraduationController;
 use App\Http\Controllers\GraduationLikeController;
+use App\Http\Controllers\KopokopoTransferController;
 use App\Http\Controllers\MembershipController;
+use App\Http\Controllers\MpesaTransactionController;
 use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\RecapController;
 use App\Http\Controllers\SuccessCardCommentController;
@@ -79,14 +81,13 @@ Route::apiResources([
     "recaps" => RecapController::class,
 ]);
 
-// By User ID
-Route::get("deaths/by-user-id/{id}", [DeathController::class, "byUserId"]);
-Route::get("weddings/by-user-id/{id}", [WeddingController::class, "byUserId"]);
-Route::get("graduations/by-user-id/{id}", [GraduationController::class, "byUserId"]);
-Route::get("success-cards/by-user-id/{id}", [SuccessCardController::class, "byUserId"]);
-Route::get("anniversaries/by-user-id/{id}", [AnniversaryController::class, "byUserId"]);
-Route::get("celebrations/by-user-id/{id}", [CelebrationController::class, "byUserId"]);
-Route::get("recaps/by-user-id/{id}", [RecapController::class, "byUserId"]);
+// Kopokopo STK Push
+Route::post("stk-push", [MpesaTransactionController::class, 'stkPush']);
+Route::post("kopokopo-initiate-transfer", [KopokopoTransferController::class, 'initiateTransfer']);
+
+Route::apiResources([
+	"mpesa-transactions" => MpesaTransactionController::class,
+]);
 
 // Filepond Controller
 Route::prefix('filepond')->group(function () {

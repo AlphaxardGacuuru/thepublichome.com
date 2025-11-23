@@ -8,7 +8,7 @@ const LogoSVG = () => {
 			viewBox="0 0 620 90"
 			className="iconLeft"
 			width="8em"
-			height="auto">
+			height="1em">
 			<g
 				data-v-423bf9ae=""
 				id="ec03da5d-78da-42d3-bbb3-2a43b95fc523"

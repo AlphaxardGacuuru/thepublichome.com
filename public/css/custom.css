@@ -1865,6 +1865,7 @@ div.hidden-scroll span {
 	border: 2px solid rgb(186, 173, 123);
 	background-color: rgb(186, 173, 123);
 	color: #FFF;
+	min-width: 90px;
 }
 
 .btn:hover,

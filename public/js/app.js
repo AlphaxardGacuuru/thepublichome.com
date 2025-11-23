@@ -137746,54 +137746,58 @@ var App = function App() {
     _useState4 = _slicedToArray(_useState3, 2),
     errors = _useState4[0],
     setErrors = _useState4[1];
-  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
+  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
     _useState6 = _slicedToArray(_useState5, 2),
-    login = _useState6[0],
-    setLogin = _useState6[1];
-  var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
+    formErrors = _useState6[0],
+    setFormErrors = _useState6[1];
+  var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
     _useState8 = _slicedToArray(_useState7, 2),
-    leftMenu = _useState8[0],
-    setLeftMenu = _useState8[1];
-  var _useState9 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])("left-open"),
+    login = _useState8[0],
+    setLogin = _useState8[1];
+  var _useState9 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
     _useState10 = _slicedToArray(_useState9, 2),
-    adminMenu = _useState10[0],
-    setAdminMenu = _useState10[1];
-  var _useState11 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(getLocalStorageAuth("auth")),
+    leftMenu = _useState10[0],
+    setLeftMenu = _useState10[1];
+  var _useState11 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])("left-open"),
     _useState12 = _slicedToArray(_useState11, 2),
-    auth = _useState12[0],
-    setAuth = _useState12[1];
-  var _useState13 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(true),
+    adminMenu = _useState12[0],
+    setAdminMenu = _useState12[1];
+  var _useState13 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(getLocalStorageAuth("auth")),
     _useState14 = _slicedToArray(_useState13, 2),
-    isAuth = _useState14[0],
-    setIsAuth = _useState14[1];
-  var _useState15 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(getLocalStorage("deaths")),
+    auth = _useState14[0],
+    setAuth = _useState14[1];
+  var _useState15 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(true),
     _useState16 = _slicedToArray(_useState15, 2),
-    deaths = _useState16[0],
-    setDeaths = _useState16[1];
-  var _useState17 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(getLocalStorage("weddings")),
+    isAuth = _useState16[0],
+    setIsAuth = _useState16[1];
+  var _useState17 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(getLocalStorage("deaths")),
     _useState18 = _slicedToArray(_useState17, 2),
-    weddings = _useState18[0],
-    setWeddings = _useState18[1];
-  var _useState19 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(getLocalStorage("graduations")),
+    deaths = _useState18[0],
+    setDeaths = _useState18[1];
+  var _useState19 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(getLocalStorage("weddings")),
     _useState20 = _slicedToArray(_useState19, 2),
-    graduations = _useState20[0],
-    setGraduations = _useState20[1];
-  var _useState21 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(getLocalStorage("successCards")),
+    weddings = _useState20[0],
+    setWeddings = _useState20[1];
+  var _useState21 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(getLocalStorage("graduations")),
     _useState22 = _slicedToArray(_useState21, 2),
-    successCards = _useState22[0],
-    setSuccessCards = _useState22[1];
-  var _useState23 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(getLocalStorage("anniversaries")),
+    graduations = _useState22[0],
+    setGraduations = _useState22[1];
+  var _useState23 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(getLocalStorage("successCards")),
     _useState24 = _slicedToArray(_useState23, 2),
-    anniversaries = _useState24[0],
-    setAnniversaries = _useState24[1];
-  var _useState25 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(getLocalStorage("celebrations")),
+    successCards = _useState24[0],
+    setSuccessCards = _useState24[1];
+  var _useState25 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(getLocalStorage("anniversaries")),
     _useState26 = _slicedToArray(_useState25, 2),
-    celebrations = _useState26[0],
-    setCelebrations = _useState26[1];
-  var _useState27 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(getLocalStorage("recaps")),
+    anniversaries = _useState26[0],
+    setAnniversaries = _useState26[1];
+  var _useState27 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(getLocalStorage("celebrations")),
     _useState28 = _slicedToArray(_useState27, 2),
-    recaps = _useState28[0],
-    setRecaps = _useState28[1];
+    celebrations = _useState28[0],
+    setCelebrations = _useState28[1];
+  var _useState29 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(getLocalStorage("recaps")),
+    _useState30 = _slicedToArray(_useState29, 2),
+    recaps = _useState30[0],
+    setRecaps = _useState30[1];
 
   /*
    * Function for fetching data from API
@@ -137847,7 +137851,8 @@ var App = function App() {
     }
     // Get other errors
     message && newError.push(err.response.data.message);
-    setErrors(newError);
+    errors && setErrors(errorsAsArray);
+    formErrors && setFormErrors(arraysWithFieldNames);
   };
 
   // Fetch data on page load
@@ -137862,7 +137867,6 @@ var App = function App() {
     getPaginated("success-cards", setSuccessCards, "success-cards");
     getPaginated("weddings", setWeddings, "weddings");
   }, [auth]);
-  console.log("rendered");
 
   /*
    *
@@ -137882,14 +137886,14 @@ var App = function App() {
    * PWA Install button */
   var deferredPrompt;
   var btnAdd = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])();
-  var _useState29 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(),
-    _useState30 = _slicedToArray(_useState29, 2),
-    downloadLink = _useState30[0],
-    setDownloadLink = _useState30[1];
-  var _useState31 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
+  var _useState31 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(),
     _useState32 = _slicedToArray(_useState31, 2),
-    downloadLinkText = _useState32[0],
-    setDownloadLinkText = _useState32[1];
+    downloadLink = _useState32[0],
+    setDownloadLink = _useState32[1];
+  var _useState33 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(""),
+    _useState34 = _slicedToArray(_useState33, 2),
+    downloadLinkText = _useState34[0],
+    setDownloadLinkText = _useState34[1];
 
   // Listen to the install prompt
   window.addEventListener("beforeinstallprompt", function (e) {
@@ -137936,6 +137940,7 @@ var App = function App() {
     setMessages: setMessages,
     errors: errors,
     setErrors: setErrors,
+    formErrors: formErrors,
     isAuth: isAuth,
     setIsAuth: setIsAuth,
     // State
@@ -141011,6 +141016,327 @@ var TopNav = function TopNav(props) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_svgs_LogoutSVG__WEBPACK_IMPORTED_MODULE_5__["default"], null)), "Logout"))))));
 };
 /* harmony default export */ __webpack_exports__["default"] = (Object(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["withRouter"])(TopNav));
+
+/***/ }),
+
+/***/ "./resources/js/components/Membership/PayModal.js":
+/*!********************************************************!*\
+  !*** ./resources/js/components/Membership/PayModal.js ***!
+  \********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom_cjs_react_router_dom_min__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom/cjs/react-router-dom.min */ "./node_modules/react-router-dom/cjs/react-router-dom.min.js");
+/* harmony import */ var react_router_dom_cjs_react_router_dom_min__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_router_dom_cjs_react_router_dom_min__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _components_Core_Btn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/components/Core/Btn */ "./resources/js/components/Core/Btn.js");
+/* harmony import */ var _components_Core_Img__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/components/Core/Img */ "./resources/js/components/Core/Img.js");
+/* harmony import */ var _components_Core_MyLink__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/components/Core/MyLink */ "./resources/js/components/Core/MyLink.js");
+/* harmony import */ var _svgs_CloseSVG__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/svgs/CloseSVG */ "./resources/js/svgs/CloseSVG.js");
+/* harmony import */ var _svgs_PaymentSVG__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/svgs/PaymentSVG */ "./resources/js/svgs/PaymentSVG.js");
+/* harmony import */ var _svgs_ForwardSVG__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @/svgs/ForwardSVG */ "./resources/js/svgs/ForwardSVG.js");
+/* harmony import */ var _svgs_BackSVG__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @/svgs/BackSVG */ "./resources/js/svgs/BackSVG.js");
+/* harmony import */ var _svgs_CheckCircleSVG__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @/svgs/CheckCircleSVG */ "./resources/js/svgs/CheckCircleSVG.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i]; return arr2; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+
+
+
+
+var PayModal = function PayModal(props) {
+  var _props$membership$pri;
+  var isMountedRef = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])(true);
+  var cancelBtn = Object(react__WEBPACK_IMPORTED_MODULE_0__["useRef"])();
+  var history = Object(react_router_dom_cjs_react_router_dom_min__WEBPACK_IMPORTED_MODULE_1__["useHistory"])();
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({}),
+    _useState2 = _slicedToArray(_useState, 2),
+    subscriptionPlan = _useState2[0],
+    setSubscriptionPlan = _useState2[1];
+  var _useState3 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(props.auth.phone),
+    _useState4 = _slicedToArray(_useState3, 2),
+    phone = _useState4[0],
+    setPhone = _useState4[1];
+  var _useState5 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(true),
+    _useState6 = _slicedToArray(_useState5, 2),
+    showUpdatePhone = _useState6[0],
+    setShowUpdatePhone = _useState6[1];
+  var _useState7 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])("d-none"),
+    _useState8 = _slicedToArray(_useState7, 2),
+    stkPushed = _useState8[0],
+    setStkPushed = _useState8[1];
+  var _useState9 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
+    _useState10 = _slicedToArray(_useState9, 2),
+    updateLoading = _useState10[0],
+    setUpdateLoading = _useState10[1];
+  var _useState11 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
+    _useState12 = _slicedToArray(_useState11, 2),
+    mpesaLoading = _useState12[0],
+    setMpesaLoading = _useState12[1];
+  var _useState13 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
+    _useState14 = _slicedToArray(_useState13, 2),
+    subscribeLoading = _useState14[0],
+    setSubscribeLoading = _useState14[1];
+  var _useState15 = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
+    _useState16 = _slicedToArray(_useState15, 2),
+    finishLoading = _useState16[0],
+    setFinishLoading = _useState16[1];
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    // Cleanup function to stop checking when component unmounts
+    return function () {
+      isMountedRef.current = false;
+    };
+  }, []);
+  Object(react__WEBPACK_IMPORTED_MODULE_0__["useEffect"])(function () {
+    // Cleanup function to stop checking when component unmounts
+    return function () {
+      isMountedRef.current = false;
+    };
+  }, []);
+  var onUpdatePhone = function onUpdatePhone(e) {
+    e.preventDefault();
+    setUpdateLoading(true);
+    Axios.put("/api/users/".concat(props.auth.id), {
+      phone: phone
+    }).then(function (res) {
+      setUpdateLoading(false);
+      props.setMessages([res.data.message]);
+      // Fetch Auth
+      props.get("auth", props.setAuth, "auth");
+    })["catch"](function (err) {
+      setUpdateLoading(false);
+      props.getErrors(err);
+    });
+  };
+
+  /*
+   * Send STK Push
+   */
+  var onSTKPush = function onSTKPush() {
+    setMpesaLoading(true);
+    Axios.post("/api/stk-push", {
+      amount: props.membership.price
+    }).then(function (res) {
+      setMpesaLoading(false);
+      setStkPushed("d-block");
+      props.setMessages([res.data.message]);
+      onCheckSubscription();
+    })["catch"](function (err) {
+      setMpesaLoading(false);
+      setStkPushed("d-none");
+      props.getErrors(err);
+    });
+  };
+  var onCheckSubscription = function onCheckSubscription() {
+    // Stop checking if component is unmounted
+    if (!isMountedRef.current) {
+      return;
+    }
+    Axios.get("/api/auth").then(function (res) {
+      // Check again if component is still mounted before proceeding
+      if (!isMountedRef.current) {
+        return;
+      }
+      if (res.data.data.membershipStatus == "paid") {
+        props.setMessages(["Membership Acquired Successfully."]);
+        setSubscribeLoading(true);
+        setStkPushed("d-none");
+      } else {
+        // Only continue checking if component is still mounted
+        if (isMountedRef.current) {
+          setTimeout(function () {
+            return onCheckSubscription();
+          }, 5000);
+        }
+      }
+    })["catch"](function (err) {
+      // Only show error if component is still mounted
+      if (isMountedRef.current) {
+        props.setErrors(["Failed to Fetch Auth"]);
+      }
+    });
+  };
+  var onFinish = function onFinish() {
+    setFinishLoading(true);
+    Axios.get("/api/auth").then(function (res) {
+      setFinishLoading(false);
+      // Click Cancel Button to close modal
+      cancelBtn.current.click();
+      props.setLocalStorage("auth", res.data.data);
+      props.setAuth(res.data.data);
+      // Redirect to props.urlTo
+      history.push(props.urlTo);
+    })["catch"](function (err) {
+      setFinishLoading(false);
+      console.info(err);
+      props.setErrors(["Failed to Finish"]);
+    });
+  };
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modal fade",
+    id: "payModal".concat(props.index),
+    tabIndex: "-1",
+    "aria-labelledby": "payModalLabel",
+    "aria-hidden": "true",
+    "data-bs-backdrop": "static",
+    "data-bs-keyboard": "false"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modal-dialog"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modal-content rounded-0",
+    style: {
+      backgroundImage: "linear-gradient(to bottom, rgb(186, 173, 123), rgb(255, 255, 255))"
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modal-header card-header border-0"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
+    id: "payModalLabel",
+    className: "modal-title text-white fs-5"
+  }, "Pay"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    ref: cancelBtn,
+    type: "button",
+    className: "text-white",
+    "data-bs-dismiss": "modal"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_svgs_CloseSVG__WEBPACK_IMPORTED_MODULE_5__["default"], null))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modal-body text-start text-wrap"
+  }, showUpdatePhone ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    onSubmit: onUpdatePhone,
+    className: "was-validated mx-auto"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: "phone"
+  }, "Mpesa Phone Number"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "d-flex align-items-center bg-white mb-3"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text",
+    id: "phone",
+    name: "phone",
+    pattern: "[0-9]{10}",
+    className: "form-control has-validation rounded-0",
+    placeholder: "0712345678",
+    defaultValue: props.auth.phone,
+    onChange: function onChange(e) {
+      return setPhone(e.target.value);
+    },
+    required: true,
+    title: "Please enter a valid 10-digit phone number"
+  })), props.formErrors.filter(function (error) {
+    return error.field == "phone";
+  }).map(function (error, key) {
+    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+      key: key,
+      className: "text-danger"
+    }, error.message);
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "d-flex justify-content-center"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Core_Btn__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    btnText: "update",
+    className: "white-btn btn-2",
+    loading: updateLoading
+  })))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, !subscribeLoading && stkPushed == "d-none" && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", {
+    className: "text-capitalize text-center"
+  }, "You're about to acquire ", props.membership.name, " ", props.membership.tier), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "d-flex justify-content-center mt-4 mb-2 mx-auto"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    className: "btn sonar-btn mb-4 mx-auto text-uppercase rounded-0",
+    onClick: function onClick() {
+      if (props.auth.phone) {
+        onSTKPush();
+      } else {
+        props.setErrors(["Please update your phone number first."]);
+        // Redirect to Previous Tab
+        setShowUpdatePhone(true);
+      }
+    },
+    disabled: !props.membership.id
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "d-flex justify-content-center align-items-center"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "ms-2"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Core_Img__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    src: "img/mpesa-logo.jpg",
+    style: {
+      width: "44px",
+      height: "auto"
+    }
+  })), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "mx-2"
+  }, "pay", " ", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "fs-6"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("small", {
+    className: "fw-lighter me-1"
+  }, "KES"), (_props$membership$pri = props.membership.price) === null || _props$membership$pri === void 0 ? void 0 : _props$membership$pri.toLocaleString()), " ", "with mpesa"), mpesaLoading && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "spinner-border my-auto",
+    style: {
+      color: "inherit"
+    }
+  }))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: stkPushed
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("center", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "Request was sent to", /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: ""
+  }, " ", props.auth.phone)), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", null, "Checking payment"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "spinner-border border-2 my-4 mx-2",
+    style: {
+      width: "3rem",
+      height: "3rem",
+      color: "rgb(186, 173, 123)"
+    }
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "Do not leave the page while we process your payment"))), subscribeLoading && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("center", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
+    className: "text-success"
+  }, "Payment Received"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "text-success fs-1"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_svgs_CheckCircleSVG__WEBPACK_IMPORTED_MODULE_9__["default"], null))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "modal-footer card-footer justify-content-between py-4 border-0"
+  }, showUpdatePhone ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    type: "button",
+    className: "btn text-uppercase rounded-0",
+    "data-bs-dismiss": "modal"
+  }, "cancel") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    type: "button",
+    className: "btn text-uppercase rounded-0",
+    onClick: function onClick() {
+      return setShowUpdatePhone(true);
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "me-1"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_svgs_BackSVG__WEBPACK_IMPORTED_MODULE_8__["default"], null)), "back"), showUpdatePhone ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    type: "button",
+    className: "btn text-uppercase rounded-0",
+    onClick: function onClick() {
+      return setShowUpdatePhone(false);
+    }
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "me-1"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_svgs_ForwardSVG__WEBPACK_IMPORTED_MODULE_7__["default"], null)), "next") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    type: "button",
+    className: "btn text-uppercase rounded-0",
+    onClick: onFinish,
+    disabled: !subscribeLoading
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "me-1"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_svgs_PaymentSVG__WEBPACK_IMPORTED_MODULE_6__["default"], null)), "finish", finishLoading && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "spinner-border my-auto",
+    style: {
+      color: "inherit"
+    }
+  })))))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+    className: "btn btn-sm text-uppercase rounded-0",
+    "data-bs-toggle": "modal",
+    "data-bs-target": "#payModal".concat(props.index)
+  }, "pay"));
+};
+/* harmony default export */ __webpack_exports__["default"] = (PayModal);
 
 /***/ }),
 
@@ -145274,13 +145600,13 @@ var ProfileShow = function ProfileShow(props) {
 
     // Set Current User to hide Side Nav links
     props.setIsAuth(props.auth.id == id);
-    props.get("deaths/by-user-id/".concat(id), setDeaths);
-    props.get("weddings/by-user-id/".concat(id), setWeddings);
-    props.get("graduations/by-user-id/".concat(id), setGraduations);
-    props.get("success-cards/by-user-id/".concat(id), setSuccesCards);
-    props.get("anniversaries/by-user-id/".concat(id), setAnniversaries);
-    props.get("celebrations/by-user-id/".concat(id), setCelebrations);
-    props.get("recaps/by-user-id/".concat(id), setRecaps);
+    props.get("deaths?userId=".concat(id), setDeaths);
+    props.get("weddings?userId=".concat(id), setWeddings);
+    props.get("graduations?userId=".concat(id), setGraduations);
+    props.get("success-cards?userId=".concat(id), setSuccesCards);
+    props.get("anniversaries?userId=".concat(id), setAnniversaries);
+    props.get("celebrations?userId=".concat(id), setCelebrations);
+    props.get("recaps?userId=".concat(id), setRecaps);
 
     /* Fetch every time id changes, 
     	fix for clicking profile link when viewing another user's profile */
@@ -145787,6 +146113,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom_cjs_react_router_dom_min__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_router_dom_cjs_react_router_dom_min__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var _components_Core_Btn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/components/Core/Btn */ "./resources/js/components/Core/Btn.js");
 /* harmony import */ var _components_Core_MyLink__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/components/Core/MyLink */ "./resources/js/components/Core/MyLink.js");
+/* harmony import */ var _components_Membership_PayModal__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/components/Membership/PayModal */ "./resources/js/components/Membership/PayModal.js");
+function _extends() { _extends = Object.assign ? Object.assign.bind() : function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
@@ -145797,10 +146125,11 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 
 
+
 var membership = function membership(props) {
   // Get history for page location
   var router = Object(react_router_dom_cjs_react_router_dom_min__WEBPACK_IMPORTED_MODULE_1__["useHistory"])();
-  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([]),
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])([[], [], [], [], [], []]),
     _useState2 = _slicedToArray(_useState, 2),
     groupedMemberships = _useState2[0],
     setGroupedMemberships = _useState2[1];
@@ -145832,7 +146161,7 @@ var membership = function membership(props) {
         // Set Auth
         props.setAuth(res2.data.data);
         // Push to edit page
-        router.push(createUrl(res.data.data.membership.name));
+        // router.push(createUrl(res.data.data.membership.name))
       });
     })["catch"](function (err) {
       // Remove loader
@@ -145867,6 +146196,7 @@ var membership = function membership(props) {
       backgroundPosition: "top"
     }
   }, groupedMemberships.map(function (memberships, key) {
+    var _memberships$;
     return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
       key: key,
       className: "card bg-2 border-0 mb-3 mt-5",
@@ -145879,7 +146209,7 @@ var membership = function membership(props) {
       className: "card-header text-white border-0 py-4"
     }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
       className: "card-title text-center"
-    }, memberships[0].name.split("_").map(function (name, key) {
+    }, (_memberships$ = memberships[0]) === null || _memberships$ === void 0 ? void 0 : _memberships$.name.split("_").map(function (name, key) {
       return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
         key: key,
         className: "me-1 text-capitalize"
@@ -145894,10 +146224,21 @@ var membership = function membership(props) {
         className: "d-flex justify-content-between"
       }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", {
         className: "text-capitalize"
-      }, membership.tier), props.auth.membershipName ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, props.auth.membershipName.match(memberships[0].name) && props.auth.membershipTier.match(membership.tier) ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Core_MyLink__WEBPACK_IMPORTED_MODULE_3__["default"], {
+      }, membership.tier), props.auth.membershipName ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, props.auth.membershipName.match(memberships[0].name) && props.auth.membershipTier.match(membership.tier) ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, props.auth.membershipStatus == "paid" ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Core_MyLink__WEBPACK_IMPORTED_MODULE_3__["default"], {
         linkTo: createUrl(memberships[0].name),
         text: "current"
-      }) : "") : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Core_Btn__WEBPACK_IMPORTED_MODULE_2__["default"], {
+      }) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Membership_PayModal__WEBPACK_IMPORTED_MODULE_4__["default"], _extends({}, props, {
+        index: "payModal".concat(key),
+        membership: membership,
+        urlTo: createUrl(memberships[0].name)
+      }))) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, props.auth.membershipStatus == "pending" ? /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Core_Btn__WEBPACK_IMPORTED_MODULE_2__["default"], {
+        btnText: "get",
+        btnClass: "btn-sm px-4",
+        onClick: function onClick() {
+          return onMembership(membership.id);
+        },
+        loading: loading == membership.id
+      }) : "")) : /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Core_Btn__WEBPACK_IMPORTED_MODULE_2__["default"], {
         btnText: "get",
         btnClass: "btn-sm px-4",
         onClick: function onClick() {
@@ -147785,6 +148126,36 @@ var ChatSVG = function ChatSVG() {
 
 /***/ }),
 
+/***/ "./resources/js/svgs/CheckCircleSVG.js":
+/*!*********************************************!*\
+  !*** ./resources/js/svgs/CheckCircleSVG.js ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+var CheckCircleSVG = function CheckCircleSVG() {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
+    xmlns: "http://www.w3.org/2000/svg",
+    width: "1em",
+    height: "1em",
+    fill: "currentColor",
+    className: "mb-1 bi bi-check-circle",
+    viewBox: "0 0 16 16"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
+    d: "M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
+    d: "m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05"
+  }));
+};
+/* harmony default export */ __webpack_exports__["default"] = (CheckCircleSVG);
+
+/***/ }),
+
 /***/ "./resources/js/svgs/ChevronUpSVG.js":
 /*!*******************************************!*\
   !*** ./resources/js/svgs/ChevronUpSVG.js ***!
@@ -147962,6 +148333,35 @@ var EmojiSVG = function EmojiSVG() {
 
 /***/ }),
 
+/***/ "./resources/js/svgs/ForwardSVG.js":
+/*!*****************************************!*\
+  !*** ./resources/js/svgs/ForwardSVG.js ***!
+  \*****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+var ForwardSVG = function ForwardSVG() {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
+    xmlns: "http://www.w3.org/2000/svg",
+    width: "1em",
+    height: "1em",
+    fill: "currentColor",
+    className: "mb-1 bi bi-arrow-right",
+    viewBox: "0 0 16 16"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
+    fillRule: "evenodd",
+    d: "M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"
+  }));
+};
+/* harmony default export */ __webpack_exports__["default"] = (ForwardSVG);
+
+/***/ }),
+
 /***/ "./resources/js/svgs/GraduationSVG.js":
 /*!********************************************!*\
   !*** ./resources/js/svgs/GraduationSVG.js ***!
@@ -148127,7 +148527,7 @@ var LogoSVG = function LogoSVG() {
     viewBox: "0 0 620 90",
     className: "iconLeft",
     width: "8em",
-    height: "auto"
+    height: "1em"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("g", {
     "data-v-423bf9ae": "",
     id: "ec03da5d-78da-42d3-bbb3-2a43b95fc523",
@@ -148264,6 +148664,36 @@ var OptionsSVG = function OptionsSVG() {
   }));
 };
 /* harmony default export */ __webpack_exports__["default"] = (OptionsSVG);
+
+/***/ }),
+
+/***/ "./resources/js/svgs/PaymentSVG.js":
+/*!*****************************************!*\
+  !*** ./resources/js/svgs/PaymentSVG.js ***!
+  \*****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+var PaymentSVG = function PaymentSVG() {
+  return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", {
+    xmlns: "http://www.w3.org/2000/svg",
+    width: "1em",
+    height: "1em",
+    fill: "currentColor",
+    className: "mb-1 bi bi-credit-card",
+    viewBox: "0 0 16 16"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
+    d: "M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm2-1a1 1 0 0 0-1 1v1h14V4a1 1 0 0 0-1-1zm13 4H1v5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1z"
+  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
+    d: "M2 10a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v1a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z"
+  }));
+};
+/* harmony default export */ __webpack_exports__["default"] = (PaymentSVG);
 
 /***/ }),
 

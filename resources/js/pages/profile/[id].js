@@ -29,13 +29,13 @@ const ProfileShow = (props) => {
 		// Set Current User to hide Side Nav links
 		props.setIsAuth(props.auth.id == id)
 
-		props.get(`deaths/by-user-id/${id}`, setDeaths)
-		props.get(`weddings/by-user-id/${id}`, setWeddings)
-		props.get(`graduations/by-user-id/${id}`, setGraduations)
-		props.get(`success-cards/by-user-id/${id}`, setSuccesCards)
-		props.get(`anniversaries/by-user-id/${id}`, setAnniversaries)
-		props.get(`celebrations/by-user-id/${id}`, setCelebrations)
-		props.get(`recaps/by-user-id/${id}`, setRecaps)
+		props.get(`deaths?userId=${id}`, setDeaths)
+		props.get(`weddings?userId=${id}`, setWeddings)
+		props.get(`graduations?userId=${id}`, setGraduations)
+		props.get(`success-cards?userId=${id}`, setSuccesCards)
+		props.get(`anniversaries?userId=${id}`, setAnniversaries)
+		props.get(`celebrations?userId=${id}`, setCelebrations)
+		props.get(`recaps?userId=${id}`, setRecaps)
 
 		/* Fetch every time id changes, 
 			fix for clicking profile link when viewing another user's profile */

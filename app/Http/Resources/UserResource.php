@@ -21,10 +21,11 @@ class UserResource extends JsonResource
             "phone" => $this->phone,
             "avatar" => $this->avatar,
             "accountType" => $this->account_type,
-            "membershipId" => $this->membership()?->id,
-            "membershipName" => $this->membership()?->name,
-            "membershipTier" => $this->membership()?->tier,
-            "membershipFeatures" => $this->membership()?->features,
+            "membershipId" => $this->activeUserMembership()->membership?->id,
+            "membershipName" => $this->activeUserMembership()->membership?->name,
+            "membershipTier" => $this->activeUserMembership()->membership?->tier,
+            "membershipStatus" => $this->activeUserMembership()->status,
+            "membershipFeatures" => $this->activeUserMembership()->membership?->features,
             "createdAt" => $this->created_at,
         ];
     }

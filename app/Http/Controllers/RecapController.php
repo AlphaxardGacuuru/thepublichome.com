@@ -70,12 +70,4 @@ class RecapController extends Controller
             "data" => $recap,
         ], 200);
     }
-
-    /*
-     * Get By User ID
-     */
-    public function byUserId($id)
-    {
-        return $this->service->byUserId($id);
-    }
 }

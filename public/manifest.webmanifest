@@ -14,13 +14,13 @@
 	"description": "The Public Home",
 	"icons": [
 		{
-			"src": "storage/img/android-chrome-512x512.png",
+			"src": "img/android-chrome-512x512.png",
 			"sizes": "512x512",
 			"type": "image/png",
 			"purpose": "maskable"
 		},
 		{
-			"src": "storage/img/android-chrome-192x192.png",
+			"src": "img/android-chrome-192x192.png",
 			"sizes": "192x192",
 			"type": "image/png",
 			"purpose": "any"
@@ -28,12 +28,12 @@
 	],
 	"screenshots": [
 		{
-			"src": "storage/img/screenshot-wide-1.png",
+			"src": "img/screenshot-wide-1.png",
 			"sizes": "1920x877",
 			"type": "image/png"
 		},
 		{
-			"src": "storage/img/screenshot-wide-2.png",
+			"src": "img/screenshot-wide-2.png",
 			"sizes": "1920x879",
 			"type": "image/png",
 			"form_factor": "wide"

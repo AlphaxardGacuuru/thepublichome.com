@@ -6,23 +6,34 @@ use App\Models\UserMembership;
 
 class UserMembershipService extends Service
 {
-    /*
+	/*
      * Store User Membership
      */
-    public function store($request)
-    {
-        $userMembership = new UserMembership;
-        $userMembership->user_id = $this->id;
-        $userMembership->membership_id = $request->membershipId;
-        $userMembership->save();
+	public function store($request)
+	{
+		$userMembership = new UserMembership;
 
-        $saved = $userMembership->save();
+		$userMembershipQuery = UserMembership::where('user_id', $this->id)
+		->where('status', 'pending');
 
-        $message = "Membership Acquired";
+		if ($userMembershipQuery->exists()) {
+			$userMembership = $userMembershipQuery->first();
+		}
 
-        $userMembershipWithMembership = UserMembership::with('membership')
-            ->find($userMembership->id);
+		$userMembership->user_id = $this->id;
+		$userMembership->membership_id = $request->membershipId;
 
-        return [$saved, $message, $userMembershipWithMembership];
-    }
+		$saved = $userMembership->save();
+
+		$userMembershipWithMembership = $userMembership
+		->with('membership')
+		->find($userMembership->id);
+		
+		$membershipName = $userMembershipWithMembership->membership->name;
+		$membershipTier = $userMembershipWithMembership->membership->tier;
+
+		$message = ucfirst($membershipName) . " " . ucfirst($membershipTier) . " Membership Selected Successfully";
+
+		return [$saved, $message, $userMembershipWithMembership];
+	}
 }

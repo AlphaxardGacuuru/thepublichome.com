@@ -171,21 +171,15 @@ class SuccessCardService extends Service
     }
 
     /*
-     * By User ID
-     */
-    public function byUserId($id)
-    {
-        $getSuccessCards = SuccessCard::where("user_id", $id)->get();
-
-        return SuccessCardResource::collection($getSuccessCards);
-    }
-
-    /*
      * Handle Search
      */
     public function search($query, $request)
     {
-        if ($request->filled("name")) {
+		if ($request->filled("userId")) {
+			$query = $query->where("user_id", $request->input("userId"));
+		}
+
+		if ($request->filled("name")) {
             $query = $query
                 ->where("name", "LIKE", "%" . $request->input("name") . "%");
         }

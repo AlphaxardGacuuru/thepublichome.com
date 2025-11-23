@@ -43,23 +43,15 @@ class RecapService extends Service
     }
 
     /*
-     * Recaps by User ID
-     */
-    public function byUserId($id)
-    {
-        $recaps = Recap::where("user_id", $id)
-            ->orderBy("id", "DESC")
-            ->get();
-
-        return RecapResource::collection($recaps);
-    }
-
-    /*
      * Handle Search
      */
     public function search($query, $request)
     {
-        $locale = $request->input("locale");
+		if ($request->filled("userId")) {
+			$query = $query->where("user_id", $request->input("userId"));
+		}
+
+		$locale = $request->input("locale");
 
         if ($request->filled("locale")) {
             $query = $query
