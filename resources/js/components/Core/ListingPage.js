@@ -120,7 +120,8 @@ const ListingPage = (props) => {
 				{props.auth.id && (
 					<Link
 						to={
-							props.auth?.membershipName == props.announcement
+							props.auth?.membershipName == props.announcement &&
+							props.auth.membershipStatus == "paid"
 								? `/${formatedAnnouncement()}s/create`
 								: "/profile/membership"
 						}
