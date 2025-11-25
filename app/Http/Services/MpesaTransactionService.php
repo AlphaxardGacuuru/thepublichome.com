@@ -135,7 +135,7 @@ class MpesaTransactionService extends Service
 			'amount' => $request->input('amount'),
 			'currency' => 'KES',
 			'email' => auth('sanctum')->user()->email,
-			'callbackUrl' => 'https://property.black.co.ke/api/mpesa-transactions',
+			'callbackUrl' => 'https://www.thepublichome.com/api/mpesa-transactions',
 			'accessToken' => $data['accessToken'],
 		]);
 
