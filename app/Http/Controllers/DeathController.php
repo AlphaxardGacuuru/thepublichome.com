@@ -36,7 +36,7 @@ class DeathController extends Controller
             "name" => "required|string",
             "sunrise" => "required|string",
             "sunset" => "required|string",
-            "burialDate" => "required|string",
+            "burialDate" => "nullable|string",
             "announcement" => "required|string",
         ]);
 

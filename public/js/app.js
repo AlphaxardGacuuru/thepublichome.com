@@ -144029,7 +144029,6 @@ var DeathCreate = function DeathCreate(props) {
     name: "name",
     className: "form-control text-secondary mb-2",
     placeholder: "Date of Burial",
-    required: true,
     onChange: function onChange(e) {
       return setBurialDate(e.target.value);
     }
