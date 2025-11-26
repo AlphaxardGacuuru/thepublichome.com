@@ -17,53 +17,49 @@ const deaths = (props) => {
 				<h5 className="text-muted text-center">No Recaps</h5>
 			)}
 
-			<div className="d-flex flex-wrap justify-content-center mb-2">
-				<div className="table-responsive">
-					<table className="table table-hover table-light">
-						<thead>
-							<tr>
-								<th>#</th>
-								<th>Locale</th>
-								<th>Tier</th>
-								<th>Name</th>
-								<th>Sunrise</th>
-								<th>Sunset</th>
-								<th>Burial</th>
-								<th>Has Recap</th>
-								<th>Likes</th>
-								<th>Date Created</th>
-								<th>Action</th>
+			<div className="table-responsive">
+				<table className="table table-hover table-light">
+					<thead>
+						<tr>
+							<th>#</th>
+							<th>Locale</th>
+							<th>Tier</th>
+							<th>Name</th>
+							<th>Sunrise</th>
+							<th>Sunset</th>
+							<th>Burial</th>
+							<th>Has Recap</th>
+							<th>Likes</th>
+							<th>Date Created</th>
+							<th>Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						{deaths.map((recap, key) => (
+							<tr key={key}>
+								<td>{key + 1}</td>
+								<td className="text-capitalize">{recap.locale}</td>
+								<td className="text-capitalize">{recap.tier}</td>
+								<td className="text-capitalize">{recap.name}</td>
+								<td className="text-capitalize">{recap.sunriseFormated}</td>
+								<td className="text-capitalize">{recap.sunsetFormated}</td>
+								<td className="text-capitalize">{recap.burialDateFormated}</td>
+								<td className="text-capitalize">
+									{recap.recap ? "Yes" : "No"}
+								</td>
+								<td className="text-capitalize">{recap.likes}</td>
+								<td className="text-capitalize">{recap.createdAt}</td>
+								<td>
+									<MyLink
+										linkTo={`/deaths/show/${recap.id}`}
+										className="btn-sm"
+										text="view"
+									/>
+								</td>
 							</tr>
-						</thead>
-						<tbody>
-							{deaths.map((recap, key) => (
-								<tr key={key}>
-									<td>{key + 1}</td>
-									<td className="text-capitalize">{recap.locale}</td>
-									<td className="text-capitalize">{recap.tier}</td>
-									<td className="text-capitalize">{recap.name}</td>
-									<td className="text-capitalize">{recap.sunriseFormated}</td>
-									<td className="text-capitalize">{recap.sunsetFormated}</td>
-									<td className="text-capitalize">
-										{recap.burialDateFormated}
-									</td>
-									<td className="text-capitalize">
-										{recap.recap ? "Yes" : "No"}
-									</td>
-									<td className="text-capitalize">{recap.likes}</td>
-									<td className="text-capitalize">{recap.createdAt}</td>
-									<td>
-										<MyLink
-											linkTo={`/deaths/show/${recap.id}`}
-											className="btn-sm"
-											text="view"
-										/>
-									</td>
-								</tr>
-							))}
-						</tbody>
-					</table>
-				</div>
+						))}
+					</tbody>
+				</table>
 			</div>
 			{/* Recap End */}
 		</div>

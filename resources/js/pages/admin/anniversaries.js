@@ -17,51 +17,49 @@ const anniversaries = (props) => {
 				<h5 className="text-muted text-center">No Anniversary Announcements</h5>
 			)}
 
-			<div className="d-flex flex-wrap mb-2">
-				<div className="table-responsive">
-					<table className="table table-hover table-light">
-						<thead>
-							<tr>
-								<th></th>
-								<th>Locale</th>
-								<th>Tier</th>
-								<th>Title</th>
-								<th>Venue</th>
-								<th>Date</th>
-								<th>Has Recap</th>
-								<th>Likes</th>
-								<th>Date Created</th>
-								<th>Action</th>
+			<div className="table-responsive">
+				<table className="table table-hover table-light">
+					<thead>
+						<tr>
+							<th></th>
+							<th>Locale</th>
+							<th>Tier</th>
+							<th>Title</th>
+							<th>Venue</th>
+							<th>Date</th>
+							<th>Has Recap</th>
+							<th>Likes</th>
+							<th>Date Created</th>
+							<th>Action</th>
+						</tr>
+					</thead>
+					<tbody>
+						{anniversaries.map((anniversary, key) => (
+							<tr key={key}>
+								<td>{key + 1}</td>
+								<td className="text-capitalize">{anniversary.locale}</td>
+								<td className="text-capitalize">{anniversary.tier}</td>
+								<td className="text-capitalize">{anniversary.title}</td>
+								<td className="text-capitalize">{anniversary.venue}</td>
+								<td className="text-capitalize">
+									{anniversary.anniversaryDateFormated}
+								</td>
+								<td className="text-capitalize">
+									{anniversary.recap ? "Yes" : "No"}
+								</td>
+								<td className="text-capitalize">{anniversary.likes}</td>
+								<td className="text-capitalize">{anniversary.createdAt}</td>
+								<td>
+									<MyLink
+										linkTo={`/anniversaries/show/${anniversary.id}`}
+										className="btn-sm"
+										text="view"
+									/>
+								</td>
 							</tr>
-						</thead>
-						<tbody>
-							{anniversaries.map((anniversary, key) => (
-								<tr key={key}>
-									<td>{key + 1}</td>
-									<td className="text-capitalize">{anniversary.locale}</td>
-									<td className="text-capitalize">{anniversary.tier}</td>
-									<td className="text-capitalize">{anniversary.title}</td>
-									<td className="text-capitalize">{anniversary.venue}</td>
-									<td className="text-capitalize">
-										{anniversary.anniversaryDateFormated}
-									</td>
-									<td className="text-capitalize">
-										{anniversary.recap ? "Yes" : "No"}
-									</td>
-									<td className="text-capitalize">{anniversary.likes}</td>
-									<td className="text-capitalize">{anniversary.createdAt}</td>
-									<td>
-										<MyLink
-											linkTo={`/anniversaries/show/${anniversary.id}`}
-											className="btn-sm"
-											text="view"
-										/>
-									</td>
-								</tr>
-							))}
-						</tbody>
-					</table>
-				</div>
+						))}
+					</tbody>
+				</table>
 			</div>
 			{/* Anniversary Announcements End */}
 		</div>

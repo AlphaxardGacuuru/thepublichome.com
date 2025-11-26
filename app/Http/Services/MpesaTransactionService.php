@@ -24,7 +24,7 @@ class MpesaTransactionService extends Service
 
 		$creditNotes = $mpesaTransactionQuery
 			->orderBy("id", "DESC")
-			->paginate(20);
+			->cursorPaginate(20);
 
 		return MpesaTransactionResource::collection($creditNotes)
 			->additional(["sum" => number_format($sum)]);

@@ -34,7 +34,7 @@ const TopNav = (props) => {
 		var isInCreatePage = location.pathname.match("/create")
 
 		// Handle Redirects for Admin
-		if (isInCreatePage && !props.auth?.membershipName) {
+		if (isInCreatePage && props.auth?.membershipStatus !== "paid") {
 			setTimeout(() => router.push("/profile/membership"), 2000)
 		}
 

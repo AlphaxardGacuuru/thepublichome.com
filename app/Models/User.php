@@ -89,6 +89,7 @@ class User extends Authenticatable
 	/*
      * Custom functions
      */
+	
 	public function activeUserMembership()
 	{
 		return $this->userMemberships()

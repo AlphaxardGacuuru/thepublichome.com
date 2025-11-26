@@ -46,7 +46,7 @@ const AdminMenu = (props) => {
 	const active = (check) => {
 		return (
 			location.pathname.match(check) &&
-			"rounded-end-pill text-primary bg-primary-subtle p-2"
+			"border-start border-light border-2 p-2"
 		)
 	}
 
@@ -54,7 +54,7 @@ const AdminMenu = (props) => {
 	const activeStrict = (check) => {
 		return (
 			location.pathname == check &&
-			"rounded-end-pill text-primary bg-primary-subtle p-2"
+			"border-start border-light border-2 p-2"
 		)
 	}
 
@@ -295,6 +295,16 @@ const AdminMenu = (props) => {
 									</Link>
 								</li>
 								{/* Recaps Link End */}
+								{/* Mpesa Transactions Link */}
+								<li className="nav-item">
+									<Link
+										to={`/admin/mpesa-transactions`}
+										className={`nav-link ${activeStrict("/admin/mpesa-transactions")}`}>
+										<div className="nav-link-icon">{/* <HomeSVG /> */}</div>
+										<div className="nav-link-text">Mpesa Transactions</div>
+									</Link>
+								</li>
+								{/* Mpesa Transactions Link End */}
 							</ul>
 						</nav>
 					</div>

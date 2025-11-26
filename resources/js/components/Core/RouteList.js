@@ -53,6 +53,7 @@ import AdminSuccessCard from "@/pages/admin/success-cards"
 import AdminAnniversary from "@/pages/admin/anniversaries"
 import AdminCelebration from "@/pages/admin/celebrations"
 import AdminRecap from "@/pages/admin/recaps"
+import AdminMpesaTransaction from "@/pages/admin/mpesa-transactions"
 
 import Socialite from "@/components/Auth/Socialite"
 
@@ -231,6 +232,10 @@ const RouteList = (GLOBAL_STATE) => {
 		{
 			path: "/admin/recaps",
 			component: <AdminRecap {...GLOBAL_STATE} />,
+		},
+		{
+			path: "/admin/mpesa-transactions",
+			component: <AdminMpesaTransaction {...GLOBAL_STATE} />,
 		},
 	]
 

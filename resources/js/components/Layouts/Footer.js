@@ -8,6 +8,9 @@ import PersonSVG from "@/svgs/PersonSVG"
 import ChevronUpSVG from "@/svgs/ChevronUpSVG"
 import TermsSVG from "@/svgs/TermsSVG"
 import HelpSVG from "@/svgs/HelpSVG"
+import PhoneSVG from "@/svgs/PhoneSVG"
+import EmailSVG from "@/svgs/EmailSVG"
+import WhatsAppSVG from "@/svgs/WhatsAppSVG"
 
 const Footer = () => {
 	const location = useLocation()
@@ -109,7 +112,9 @@ const Footer = () => {
 				<div className="col-sm-1"></div>
 				<div className="col-sm-3">
 					<h1 className="text-white">Contact Us</h1>
-					<p></p>
+					<p className="text-white"><span className="me-2"><PhoneSVG /></span>+254721946369</p>
+					<p className="text-white"><span className="me-2"><WhatsAppSVG /></span>+254727334114</p>
+					<p className="text-white"><span className="me-2"><EmailSVG /></span>thepublichomes@gmail.com</p>
 				</div>
 			</div>
 			<div className="row">
