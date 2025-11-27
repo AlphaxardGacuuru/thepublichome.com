@@ -44,7 +44,7 @@ class AnniversaryService extends Service
     {
         $membershipQuery = UserMembership::where("user_id", $this->id)
             ->where("membership_id", $request->membershipId)
-            ->where("status", "pending");
+            ->where("status", "paid");
 
         // Check if User Has Membership
         if ($membershipQuery->doesntExist()) {

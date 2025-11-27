@@ -14,7 +14,7 @@ class UserMembershipService extends Service
 		$userMembership = new UserMembership;
 
 		$userMembershipQuery = UserMembership::where('user_id', $this->id)
-		->where('status', 'pending');
+		->where('status', 'paid');
 
 		if ($userMembershipQuery->exists()) {
 			$userMembership = $userMembershipQuery->first();

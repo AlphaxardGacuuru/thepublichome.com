@@ -108,14 +108,27 @@ const App = () => {
 	/*
 	 * Function for getting errors from responses
 	 */
+
+	// Function for getting errors from responses
 	const getErrors = (err, message = false) => {
-		const resErrors = err.response.data.errors
-		var newError = []
-		for (var resError in resErrors) {
-			newError.push(resErrors[resError])
+		const validationErrors = err.response.data.errors
+		var errorsAsArray = []
+
+		for (var field in validationErrors) {
+			errorsAsArray.push(validationErrors[field])
 		}
+
+		// Get Errors with keys as the field names
+		var arraysWithFieldNames = []
+		for (var field in validationErrors) {
+			arraysWithFieldNames.push({
+				field: field,
+				message: validationErrors[field],
+			})
+		}
+
 		// Get other errors
-		message && newError.push(err.response.data.message)
+		message && errorsAsArray.push(err.response.data.message)
 		errors && setErrors(errorsAsArray)
 		formErrors && setFormErrors(arraysWithFieldNames)
 	}
