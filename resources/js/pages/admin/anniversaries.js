@@ -10,7 +10,7 @@ const anniversaries = (props) => {
 	return (
 		<div>
 			{/* Anniversary Announcements */}
-			<h1 className="my-2 text-center">Anniversary Announcements</h1>
+			<h1 className="my-4 text-center">Anniversary Announcements</h1>
 
 			{/* Loading Anniversary Announcement items */}
 			{anniversaries.length < 1 && (

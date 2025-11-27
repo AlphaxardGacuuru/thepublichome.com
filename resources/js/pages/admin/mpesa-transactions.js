@@ -10,13 +10,11 @@ const mpesaTransactions = (props) => {
 	return (
 		<div>
 			{/* Mpesa Transactions */}
-			<h1 className="text-center">Mpesa Transactions</h1>
+			<h1 className="my-4 text-center">Mpesa Transactions</h1>
 
 			{/* Loading Mpesa Transaction Announcement items */}
 			{mpesaTransactions.length < 1 && (
-				<h5 className="text-muted text-center">
-					No Mpesa Transactions
-				</h5>
+				<h5 className="text-muted text-center">No Mpesa Transactions</h5>
 			)}
 
 			<div className="table-responsive">

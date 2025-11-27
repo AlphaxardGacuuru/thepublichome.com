@@ -10,7 +10,7 @@ const graduations = (props) => {
 	return (
 		<div>
 			{/* Graduation Announcements */}
-			<h1 className="my-2 text-center">Graduation Announcements</h1>
+			<h1 className="my-4 text-center">Graduation Announcements</h1>
 
 			{/* Loading Graduation Announcement items */}
 			{graduations.length < 1 && (

@@ -10,7 +10,7 @@ const weddings = (props) => {
 	return (
 		<div>
 			{/* Wedding Announcements */}
-			<h1 className="my-2 text-center">Wedding Announcements</h1>
+			<h1 className="my-4 text-center">Wedding Announcements</h1>
 
 			{/* Loading Wedding Announcement items */}
 			{weddings.length < 1 && (

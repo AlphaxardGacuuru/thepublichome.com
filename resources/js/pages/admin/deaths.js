@@ -10,7 +10,7 @@ const deaths = (props) => {
 	return (
 		<div>
 			{/* Death Announcements */}
-			<h1 className="text-center">Death Announcements</h1>
+			<h1 className="text-center mt-2">Death Announcements</h1>
 
 			{/* Loading Death Announcement items */}
 			{deaths.length < 1 && (

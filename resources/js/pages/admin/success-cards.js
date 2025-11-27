@@ -10,7 +10,7 @@ const successCards = (props) => {
 	return (
 		<div>
 			{/* Success Card Announcements */}
-			<h1 className="my-2 text-center">Success Card Announcements</h1>
+			<h1 className="my-4 text-center">Success Card Announcements</h1>
 
 			{/* Loading Success Card Announcement items */}
 			{successCards.length < 1 && (
