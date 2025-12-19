@@ -306,8 +306,8 @@ const DeathEdit = (props) => {
 								className="form-control mb-2"
 								onChange={(e) => setEulogyType(e.target.value)}>
 								<option value="">Select Eulogy Type</option>
-								<option value="written">Written</option>
-								<option value="file">File</option>
+								<option value="written" selected={death.eulogyWords ? "written" : ""}>Written</option>
+								<option value="file" selected={death.eulogy ? "file" : ""}>File</option>
 							</select>
 							{/* Eulogy Type End */}
 
@@ -626,13 +626,15 @@ const DeathEdit = (props) => {
 
 						{/* Eulogy */}
 						<h5>Eulogy</h5>
-						<div className="d-flex justify-content-center flex-wrap mb-4">
-							<div className="card shadow p-2">
-								<iframe
-									src={`/storage/${death.eulogy}`}
-									style={{ width: "15em", height: "30em" }}></iframe>
+						{death.eulogy && (
+							<div className="d-flex justify-content-center flex-wrap mb-4">
+								<div className="card shadow p-2">
+									<iframe
+										src={`/storage/${death.eulogy}`}
+										style={{ width: "15em", height: "30em" }}></iframe>
+								</div>
 							</div>
-						</div>
+						)}
 						{/* Eulogy End */}
 					</div>
 				</div>
