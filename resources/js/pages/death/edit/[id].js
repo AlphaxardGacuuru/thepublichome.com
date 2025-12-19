@@ -306,8 +306,8 @@ const DeathEdit = (props) => {
 								className="form-control mb-2"
 								onChange={(e) => setEulogyType(e.target.value)}>
 								<option value="">Select Eulogy Type</option>
-								<option value="written" selected={death.eulogyWords ? "written" : ""}>Written</option>
-								<option value="file" selected={death.eulogy ? "file" : ""}>File</option>
+								<option value="written" selected={death.eulogyWords}>Written</option>
+								<option value="file" selected={death.eulogy}>File</option>
 							</select>
 							{/* Eulogy Type End */}
 
