@@ -137842,15 +137842,27 @@ var App = function App() {
   /*
    * Function for getting errors from responses
    */
+
+  // Function for getting errors from responses
   var getErrors = function getErrors(err) {
     var message = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-    var resErrors = err.response.data.errors;
-    var newError = [];
-    for (var resError in resErrors) {
-      newError.push(resErrors[resError]);
+    var validationErrors = err.response.data.errors;
+    var errorsAsArray = [];
+    for (var field in validationErrors) {
+      errorsAsArray.push(validationErrors[field]);
     }
+
+    // Get Errors with keys as the field names
+    var arraysWithFieldNames = [];
+    for (var field in validationErrors) {
+      arraysWithFieldNames.push({
+        field: field,
+        message: validationErrors[field]
+      });
+    }
+
     // Get other errors
-    message && newError.push(err.response.data.message);
+    message && errorsAsArray.push(err.response.data.message);
     errors && setErrors(errorsAsArray);
     formErrors && setFormErrors(arraysWithFieldNames);
   };
@@ -141603,7 +141615,7 @@ var anniversaries = function anniversaries(props) {
     return props.get("anniversaries", setAnniversariess);
   }, []);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
-    className: "my-2 text-center"
+    className: "my-4 text-center"
   }, "Anniversary Announcements"), anniversaries.length < 1 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
     className: "text-muted text-center"
   }, "No Anniversary Announcements"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -141669,7 +141681,7 @@ var celebrations = function celebrations(props) {
     return props.get("celebrations", setCelebrations);
   }, []);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
-    className: "my-2 text-center"
+    className: "my-4 text-center"
   }, "Celebration Announcements"), celebrations.length < 1 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
     className: "text-muted text-center"
   }, "No Celebration Announcements"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -141735,7 +141747,7 @@ var deaths = function deaths(props) {
     return props.get("deaths", setDeaths);
   }, []);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
-    className: "text-center"
+    className: "text-center mt-2"
   }, "Death Announcements"), deaths.length < 1 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
     className: "text-muted text-center"
   }, "No Death Announcements"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -141803,7 +141815,7 @@ var graduations = function graduations(props) {
     return props.get("graduations", setGraduations);
   }, []);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
-    className: "my-2 text-center"
+    className: "my-4 text-center"
   }, "Graduation Announcements"), graduations.length < 1 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
     className: "text-muted text-center"
   }, "No Graduation Announcements"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -141997,7 +142009,7 @@ var mpesaTransactions = function mpesaTransactions(props) {
     return props.get("mpesa-transactions", setMpesaTransactions);
   }, []);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
-    className: "text-center"
+    className: "my-4 text-center"
   }, "Mpesa Transactions"), mpesaTransactions.length < 1 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
     className: "text-muted text-center"
   }, "No Mpesa Transactions"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -142051,7 +142063,7 @@ var deaths = function deaths(props) {
     return props.get("deaths", setDeaths);
   }, []);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
-    className: "text-center"
+    className: "my-4 text-center"
   }, "Recaps"), deaths.length < 1 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
     className: "text-muted text-center"
   }, "No Recaps"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -142119,7 +142131,7 @@ var successCards = function successCards(props) {
     return props.get("success-cards", setSuccessCards);
   }, []);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
-    className: "my-2 text-center"
+    className: "my-4 text-center"
   }, "Success Card Announcements"), successCards.length < 1 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
     className: "text-muted text-center"
   }, "No Success Card Announcements"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -142181,7 +142193,7 @@ var weddings = function weddings(props) {
     return props.get("weddings", setWeddings);
   }, []);
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h1", {
-    className: "my-2 text-center"
+    className: "my-4 text-center"
   }, "Wedding Announcements"), weddings.length < 1 && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
     className: "text-muted text-center"
   }, "No Wedding Announcements"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -144406,9 +144418,11 @@ var DeathEdit = function DeathEdit(props) {
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
     value: ""
   }, "Select Eulogy Type"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-    value: "written"
+    value: "written",
+    selected: death.eulogyWords
   }, "Written"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
-    value: "file"
+    value: "file",
+    selected: death.eulogy
   }, "File")), eulogyType == "written" && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react__WEBPACK_IMPORTED_MODULE_0___default.a.Fragment, null, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("textarea", {
     type: "text",
     name: "eulogyWords",
@@ -144672,7 +144686,7 @@ var DeathEdit = function DeathEdit(props) {
       src: "/storage/".concat(video)
       // type="video/mp4"
     }), "Your browser does not support the video tag."));
-  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "Eulogy"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "Eulogy"), death.eulogy && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "d-flex justify-content-center flex-wrap mb-4"
   }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "card shadow p-2"
